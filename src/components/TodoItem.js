@@ -14,6 +14,7 @@ const TodoItem = () =>{
             const updatedArray = [...todos];
             updatedArray[editIndex] = value;
             setTodos(updatedArray);
+            setEditIndex(null);
         }
         else{
         const newAdd = [...todos,value];
@@ -35,7 +36,7 @@ const TodoItem = () =>{
         <div>
            <form onSubmit={handleSubmit}>
             <input type="text" value={value} placeholder="Enter your todo" onChange={(e) => setValue(e.target.value)}/>
-            <button type='submit' onClick={handleSubmit}>Add To Do</button>
+            <button type='submit' onClick={handleSubmit}> {editIndex !== null ? "Save Changes" : "Add Todo"}</button>
            </form>
            <ul>
             {todos.map((todo, index) => (
